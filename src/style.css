@@ -159,14 +159,14 @@ body{
 
 .this-is-pain,
 .this-is-pain2{
+    width:100%;
+    max-width:380px;
+
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
 
-    width:380px;
-    height:70px;
-
-    margin:25px auto 0 auto;
+    margin:25px auto 0;
 
     background:#ADD8E6;
     color:#000;
