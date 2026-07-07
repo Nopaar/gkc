@@ -26,27 +26,37 @@ if (menuBtn && mobileMenu) {
 $(function () {
 
   /* ==========================
-     SCROLL EFFECT
-  ========================== */
+    SCROLL EFFECT (OPTIMIZED)
+ ========================== */
 
-  $(window).on("scroll", function () {
+  const navbar = document.querySelector(".navbar");
+  const scrollBtn = document.querySelector(".scroll-up-btn");
+  const backBtn = document.getElementById("back-to-top");
 
-    const scrollTop = $(this).scrollTop();
+  let scrollTick = false;
 
-    // Sticky Navbar
-    $(".navbar").toggleClass("sticky", scrollTop > 20);
+  window.addEventListener("scroll", () => {
 
-    // Scroll Up Button
-    $(".scroll-up-btn").toggleClass("show", scrollTop > 500);
+    if (scrollTick) return;
 
-    // Back To Top
-    const backBtn = document.getElementById("back-to-top");
+    scrollTick = true;
 
-    if (backBtn) {
-      backBtn.style.display = scrollTop > 300 ? "block" : "none";
-    }
+    requestAnimationFrame(() => {
 
-  });
+      const y = window.scrollY;
+
+      navbar?.classList.toggle("sticky", y > 20);
+      scrollBtn?.classList.toggle("show", y > 500);
+
+      if (backBtn) {
+        backBtn.style.display = y > 300 ? "block" : "none";
+      }
+
+      scrollTick = false;
+
+    });
+
+  }, { passive: true });
 
   /* ==========================
      SCROLL TO TOP
@@ -108,31 +118,31 @@ $(function () {
    TYPED JS SPAREPART
 ========================== */
 
-if (typeof Typed !== "undefined") {
+  if (typeof Typed !== "undefined") {
 
-  new Typed(".typing-sparepart", {
-    strings: [
-      "LCD local berkualitas (S&K Berlaku) dan dapat dicek ditempat!",
-      "Battery double power berkualitas dan dijamin awet!",
-      "Kaca kamera berbagai tipe Smartphone",
-      "Flexible On/Off + Volume Berbagai Tipe Smartphone",
-      "Tombol luar power + volume murah!",
-      "Charger Original dan Fast Charging",
-      "Buzzer Berkualitas",
-      "Menyediakan berbagai macam alat service juga!",
-      "PCB berbagai macam tipe dan berkualitas!",
-      "Backcover, Backglass juga ada!",
-      "Sparepart Murah dan Bergaransi",
-      "Tersedia Berbagai Merek Smartphone"
-    ],
-    typeSpeed: 70,
-    backSpeed: 50,
-    backDelay: 50,
-    loop: true,
-    smartBackspace: true
-  });
+    new Typed(".typing-sparepart", {
+      strings: [
+        "LCD local berkualitas (S&K Berlaku) dan dapat dicek ditempat!",
+        "Battery double power berkualitas dan dijamin awet!",
+        "Kaca kamera berbagai tipe Smartphone",
+        "Flexible On/Off + Volume Berbagai Tipe Smartphone",
+        "Tombol luar power + volume murah!",
+        "Charger Original dan Fast Charging",
+        "Buzzer Berkualitas",
+        "Menyediakan berbagai macam alat service juga!",
+        "PCB berbagai macam tipe dan berkualitas!",
+        "Backcover, Backglass juga ada!",
+        "Sparepart Murah dan Bergaransi",
+        "Tersedia Berbagai Merek Smartphone"
+      ],
+      typeSpeed: 70,
+      backSpeed: 50,
+      backDelay: 50,
+      loop: true,
+      smartBackspace: true
+    });
 
-}  
+  }
 
   /* ==========================
      OWL CAROUSEL
@@ -271,7 +281,7 @@ function sendwhatsapp() {
   }
 
   const text =
-`*Nama:* ${name}
+    `*Nama:* ${name}
 *Negara:* ${country}
 *Pesan:* ${message}
 
@@ -294,36 +304,40 @@ Instagram: @nov444r`;
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const currentPage =
-        window.location.pathname.split("/").pop();
+  const currentPage =
+    window.location.pathname.split("/").pop();
 
-    const navLinks =
-        document.querySelectorAll(".menu a, .mobile-nav a");
+  const navLinks =
+    document.querySelectorAll(".menu a, .mobile-nav a");
 
-    navLinks.forEach(link => {
+  navLinks.forEach(link => {
 
-        const href = link.getAttribute("href");
+    const href = link.getAttribute("href");
 
-        // Home
-        if (
-            (currentPage === "" ||
-             currentPage === "index.html") &&
-             href === "index.html"
-        ) {
-            link.classList.add("active");
-        }
+    // Home
+    if (
+      (currentPage === "" ||
+        currentPage === "index.html") &&
+      href === "index.html"
+    ) {
+      link.classList.add("active");
+    }
 
-        // About
-        if (
-            currentPage === "about.html" &&
-            href === "about.html"
-        ) {
-            link.classList.add("active");
-        }
+    // About
+    if (
+      currentPage === "about.html" &&
+      href === "about.html"
+    ) {
+      link.classList.add("active");
+    }
 
-    });
+  });
 
 });
+
+/* ==========================
+   ACTIVE SECTION SCROLL
+========================== */
 
 /* ==========================
    ACTIVE SECTION SCROLL
@@ -332,40 +346,43 @@ document.addEventListener("DOMContentLoaded", () => {
 const sections = document.querySelectorAll("section[id]");
 const navItems = document.querySelectorAll(".menu a");
 
+let navTick = false;
+
 window.addEventListener("scroll", () => {
+
+  if (navTick) return;
+
+  navTick = true;
+
+  requestAnimationFrame(() => {
 
     let current = "";
 
     sections.forEach(section => {
 
-        const sectionTop =
-            section.offsetTop - 150;
+      const top = section.offsetTop - 180;
+      const bottom = top + section.offsetHeight;
 
-        const sectionHeight =
-            section.clientHeight;
-
-        if (
-            pageYOffset >= sectionTop &&
-            pageYOffset < sectionTop + sectionHeight
-        ) {
-            current = section.getAttribute("id");
-        }
+      if (window.scrollY >= top && window.scrollY < bottom) {
+        current = section.id;
+      }
 
     });
 
     navItems.forEach(link => {
 
-        link.classList.remove("active");
-
-        if (
-            link.getAttribute("href") === "#" + current
-        ) {
-            link.classList.add("active");
-        }
+      link.classList.toggle(
+        "active",
+        link.getAttribute("href") === "#" + current
+      );
 
     });
 
-});
+    navTick = false;
+
+  });
+
+}, { passive: true });
 
 /* =========================================================
    STAFF SLIDER — scroll button + drag to scroll (PC)
@@ -409,12 +426,23 @@ document.addEventListener('DOMContentLoaded', function () {
       staffTrack.classList.remove('dragging');
     });
 
-    staffTrack.addEventListener('mousemove', (e) => {
+    let dragFrame;
+
+    staffTrack.addEventListener("mousemove", e => {
+
       if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - staffTrack.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      staffTrack.scrollLeft = scrollLeft - walk;
+
+      cancelAnimationFrame(dragFrame);
+
+      dragFrame = requestAnimationFrame(() => {
+
+        const x = e.pageX - staffTrack.offsetLeft;
+        const walk = (x - startX) * 1.5;
+
+        staffTrack.scrollLeft = scrollLeft - walk;
+
+      });
+
     });
 
     // Support scroll horizontal pakai mouse wheel
