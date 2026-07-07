@@ -499,21 +499,36 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
     <script>
-
         AOS.init({
-            duration: 1000,
-            once: true
+            duration: 600,
+            easing: "ease-out-cubic",
+            once: true,
+            offset: 60,
+            mirror: false,
+            throttleDelay: 99,
+            debounceDelay: 50
         });
-
     </script>
 
     <script src="src/script.js"></script>
 
     <script>
 
-        $(window).on("load", function () {
+        window.addEventListener("load", () => {
 
-            $(".loader-wrapper").fadeOut("slow");
+            const loader = document.querySelector(".loader-wrapper");
+
+            if (!loader) return;
+
+            loader.style.transition = "opacity .35s ease";
+
+            loader.style.opacity = "0";
+
+            setTimeout(() => {
+
+                loader.style.display = "none";
+
+            }, 350);
 
         });
 
