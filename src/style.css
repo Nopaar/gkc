@@ -15,6 +15,7 @@ body{
     padding:0;
     background:#121212;
     overflow-x:hidden;
+    
 }
 .max-width {
   max-width: 1300px;
@@ -1102,3 +1103,100 @@ footer span a:hover {
         font-size:17px;
     }
 }
+
+.this-is-pain,
+.community-btn,
+.experience-left a{
+    transition: .35s ease;
+}
+
+
+
+.this-is-pain:hover,
+.community-btn:hover,
+.experience-left a:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(173,216,230,.5),
+                0 0 30px rgba(173,216,230,.25);
+}
+
+.navbar.sticky{
+    background: rgba(18,18,18,.55);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.home-logo{
+    animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes floating{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+/* ==========================
+   STAFF DESCRIPTION
+========================== */
+
+.staff-description{
+    width:100%;
+    max-width:700px;
+    margin:0 auto 50px;
+    padding:0 25px;
+
+    text-align:center;
+
+    font-family:'Poppins', sans-serif;
+    font-size:22px;
+    line-height:1.8;
+    color:#ccc;
+}
+
+.staff-description p{
+    margin:0;
+}
+
+@media (max-width:991px){
+
+    .staff-description{
+        max-width:600px;
+        padding:0 35px;
+        font-size:20px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .staff-description{
+        max-width:500px;
+        padding:0 30px;
+        font-size:18px;
+        line-height:1.7;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .staff-description{
+        max-width:360px;
+        padding:0 28px;
+        font-size:16px;
+        line-height:1.8;
+    }
+
+}  
