@@ -1,1229 +1,526 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-}
-*::selection {
-  background: #ADD8E6;
-}
-html,
-body{
-    margin:0;
-    padding:0;
-    background:#121212;
-    overflow-x:hidden;
-    
-}
-.max-width {
-  max-width: 1300px;
-  padding: 0 80px;
-  margin: auto;
-  overflow-x: hidden;
-}
-
-::-webkit-scrollbar {
-  width: 0px;
-  background: #000000;
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 20px;
-  background: #ADD8E6;
-  box-shadow: inset 2px 2px 2px rgba(255, 255, 255, 0.25), inset -2px -2px -2px rgba(0,0,0,0.25);
-}
-
-/* =========================
-   NAVBAR
-========================= */
-
-.navbar{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:99999;
-    padding:20px 0;
-    transition:.3s;
-}
-
-.navbar.sticky{
-    background:rgba(0,0,0,.35);
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-}
-
-.navbar .max-width{
-    max-width:100%;
-    padding:0 30px;
-    margin:0;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.navbar .logo a{
-    display:flex;
-    align-items:center;
-}
-
-.navbar-logo{
-    height:60px;
-    width:auto;
-    display:block;
-}
-
-.navbar .menu{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    flex-wrap:nowrap;
-}
-
-.navbar .menu li{
-    list-style:none;
-    display:inline-block;
-}
-
-.navbar .menu li a{
-    position:relative;
-    color:#fff;
-    font-family:'Ubuntu', sans-serif;
-    font-size:18px;
-    font-weight:500;
-    margin-left:15px;
-    transition:.3s ease;
-}
-
-.navbar .menu li a::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-6px;
-    width:0;
-    height:3px;
-    background:#009dff;
-    border-radius:10px;
-    transition:.3s ease;
-}
-
-.navbar .menu li a:hover::after,
-.navbar .menu li a.active::after{
-    width:100%;
-}
-
-.navbar .menu li a:hover,
-.navbar .menu li a.active{
-    color:#009dff;
-}
-
-.menu-btn {
-  color: #fff;
-  font-size: 23px;
-  cursor: pointer;
-  display: none;
-}
-.scroll-up-btn {
-  position: fixed;
-  height: 45px;
-  width: 42px;
-  background: #ADD8E6;
-  right: 30px;
-  bottom: 10px;
-  text-align: center;
-  line-height: 45px;
-  color: #fff;
-  z-index: 9999;
-  font-size: 30px;
-  border-radius: 6px;
-  cursor: pointer;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease;
-}
-.scroll-up-btn.show {
-  bottom: 30px;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-#particles-js {
-  height: 100vh;
-  width: 100%;
-  position: absolute;
-}
-
-/* ===================================
-   BUTTON
-=================================== */
-
-.this-is-pain,
-.this-is-pain2{
-    width:100%;
-    max-width:380px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    margin:25px auto 0;
-
-    background:#ADD8E6;
-    color:#000;
-
-    font-size:20px;
-    font-weight:700;
-
-    border-radius:10px;
-    border:2px solid #ADD8E6;
-
-    position:relative;
-    left:0;
-    right:0;
-
-    text-align:center;
-
-    transition:.3s ease;
-}
-
-.this-is-pain:hover,
-.this-is-pain2:hover{
-    background:transparent;
-    color:#ADD8E6;
-}
-
-.hamburger {
-  position: relative;
-  display: block;
-  width: 35px;
-  cursor: pointer;
-
-  appearance: none;
-  background: none;
-  outline: none;
-  border: none;
-}
-
-.hamburger .bar, .hamburger:after, .hamburger:before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 5px;
-  background-color: #fff;
-  margin: 6px 0px;
-  transition: 0.4s;
-}
-
-.hamburger.is-active:before {
-  transform: rotate(-45deg) translate(-8px, 6px);
-}
-
-.hamburger.is-active:after {
-  transform: rotate(45deg) translate(-9px, -8px);
-}
-
-.hamburger.is-active .bar {
-  opacity: 0;
-}
-
-.mobile-nav {
-  font-family: 'Ubuntu', sans-serif;
-  position: fixed;
-  top: 0;
-  left: 100%;
-  width: 100%;
-  min-height: 100vh;
-  display: block;
-  z-index: 98;
-  background-color: #121212;
-  padding-top: 120px;
-  transition: 0.4s;
-}
-
-.mobile-nav.is-active {
-  left: 0;
-}
-
-.mobile-nav a{
-    display:block;
-    max-width:250px;
-    margin:0 auto 16px;
-    text-align:center;
-    padding:14px 20px;
-
-    color:#ffffff;
-    font-family:'Ubuntu',sans-serif;
-    font-size:18px;
-    font-weight:500;
-    border-radius:12px;
-    transition:.3s ease;
-}
-
-.mobile-nav a:hover {
-  background-color: #000000;
-  border-radius: 20px;
-}
-
-@media (min-width: 768px) {
-  .mobile-nav {
-    display: none;
-  }
-
-  .hamburger {
-    display: none;
-  }
-}/* ==========================
-   RESPONSIVE NAVBAR
-========================== */
-
-.hamburger{
-    display:none;
-}
-
-@media screen and (max-width:768px){
-
-    .navbar .menu{
-        display:none;
-    }
-
-    .hamburger{
-        display:block;
-    }
-
-    .navbar .max-width{
-        padding:0 20px;
-    }
-
-    .navbar-logo{
-        height:50px;
-    }
-
-    .mobile-nav{
-        display:block;
-    }
-
-}
-
-@media screen and (min-width:769px){
-
-    .mobile-nav{
-        display:none;
-    }
-
-    .hamburger{
-        display:none;
-    }
-
-    .navbar .menu{
-        display:flex;
-    }
-
-}
-
-section {
-  padding: 100px 0;
-}
-
-.owl-dots {
-  text-align: center;
-  margin-top: 20px;
-}
-.owl-dot {
-  height: 13px;
-  width: 13px;
-  margin: 0 5px;
-  outline: none!important;
-  border-radius: 50%;
-  border: 2px solid #ADD8E6!important;
-  transition: all 0.3s ease;
-}
-.owl-dot.active {
-  width: 35px;
-  border-radius: 14px;
-}
-.owl-dot.active,
-.owl-dot:hover {
-  background: #ADD8E6!important;
-}
-
-footer {
-    font-family:'Poppins', sans-serif;
-    background:#121212;
-    padding:40px 23px 80px;
-    color:#fff;
-    text-align:center;
-    margin-bottom:0;
-}
-footer .footer-logo{
-    height:70px;
-    width:auto;
-    margin-bottom:15px;
-}
-footer h2{
-    font-family:'Ubuntu', sans-serif;
-    font-size:28px;
-    letter-spacing:2px;
-    margin-bottom:10px;
-}
-footer p{
-    font-size:16px;
-    color:#ccc;
-    margin-bottom:10px;
-    line-height:1.6;
-}
-footer span {
-    display:block;
-    margin-top:20px;
-    font-size:14px;
-    color:#999;
-}
-footer span a {
-  color: #ADD8E6;
-  text-decoration: none;
-}
-footer span a:hover {
-  text-decoration: underline;
-}
-
-.loader-wrapper {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: #222;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  position: fixed;
-}
-
-.longfazers {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.longfazers span {
-  position: absolute;
-  height: 4px;
-  width: 20%;
-  background: #ADD8E6;
-}
-.longfazers span:nth-child(1) {
-  top: 20%;
-  animation: lf 0.6s linear infinite;
-  animation-delay: -5s;
-}
-.longfazers span:nth-child(2) {
-  top: 40%;
-  animation: lf2 0.8s linear infinite;
-  animation-delay: -1s;
-}
-.longfazers span:nth-child(3) {
-  top: 60%;
-  animation: lf3 0.6s linear infinite;
-}
-.longfazers span:nth-child(4) {
-  top: 80%;
-  animation: lf4 0.5s linear infinite;
-  animation-delay: -3s;
-}
-@keyframes lf {
-  0% { left: -200%; }
-  100% { left: 200%; opacity: 0; }
-}
-@keyframes lf2 {
-  0% { left: -200%; }
-  100% { left: 200%; opacity: 0; }
-}
-@keyframes lf3 {
-  0% { left: -200%; }
-  100% { left: 100%; opacity: 0; }
-}
-@keyframes lf4 {
-  0% { left: -200%; }
-  100% { left: 100%; opacity: 0; }
-}
-
-/* ===================================
-   HOME SPLIT LAYOUT
-=================================== */
-
-.home{
-    min-height:100vh;
-    background:#121212;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding-top:100px;
-    color:#fff;
-    font-family:'Ubuntu', sans-serif;
-}
-
-.home-split{
-    width:100%;
-    max-width:1600px;
-    margin:0 auto;
-    padding:0 100px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:70px;
-}
-
-.home-left,
-.home-right{
-    flex:1;
-    max-width:50%;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-}
-
-.vertical-divider{
-    width:2px;
-    height:500px;
-    background:rgba(255,255,255,.18);
-    flex-shrink:0;
-}
-
-.home .text-2{
-    font-size:75px;
-    font-weight:700;
-    line-height:1.05;
-    color:#fff;
-    margin-bottom:25px;
-    font-family:'Ubuntu',sans-serif;
-    text-transform:uppercase;
-}
-
-.home-logo{
-    max-width:100%;
-    width:420px;
-    height:auto;
-}
-
-/* ==========================================
-   BRAND DESCRIPTION (teks di bawah judul Home)
-   -> jadi acuan style untuk About Us
-========================================== */
-
-.brand-description{
-    max-width:520px;
-    font-family:'Ubuntu', sans-serif;
-    color:#fff;
-}
-
-.brand-description p{
-    font-size:20px;
-    line-height:1.8;
-    margin-bottom:15px;
-    color:#e0e0e0;
-}
-
-.brand-description span{
-    display:inline-block;
-    margin-top:15px;
-    font-size:32px;
-    font-weight:700;
-    letter-spacing:3px;
-    color:#ADD8E6;
-}
-
-.home .text-3{
-    font-size:32px;
-    margin-top:25px;
-    min-height:45px;
-    font-family:'Ubuntu', sans-serif;
-}
-
-.home .text-3 .typing{
-    color:#ADD8E6;
-    font-weight:600;
-}
-
-/* ===================================
-   RESPONSIVE HOME
-=================================== */
-
-@media(max-width:1200px){
-
-    .home-split{
-        padding:0 50px;
-        gap:50px;
-    }
-
-    .home .text-2{
-        font-size:58px;
-    }
-
-    .brand-description p{
-        font-size:18px;
-    }
-
-    .brand-description span{
-        font-size:26px;
-    }
-}
-
-@media(max-width:991px){
-
-    .home{
-        height:auto;
-        padding-top:120px;
-        padding-bottom:80px;
-    }
-
-    .home-split{
-        flex-direction:column;
-        gap:60px;
-        padding:0 25px;
-    }
-
-    .home-left,
-    .home-right{
-        max-width:100%;
-        width:100%;
-    }
-
-    .vertical-divider{
-        width:100%;
-        max-width:300px;
-        height:2px;
-        margin:auto;
-    }
-
-    .home .text-2{
-        font-size:46px;
-        line-height:1.15;
-    }
-
-    .brand-description{
-        max-width:500px;
-        margin:0 auto;
-    }
-
-    .home .text-3{
-        font-size:26px;
-    }
-}
-
-@media(max-width:480px){
-
-    .home .text-2{
-        font-size:34px;
-    }
-
-    .brand-description p{
-        font-size:16px;
-    }
-
-    .brand-description span{
-        font-size:22px;
-    }
-
-    .home .text-3{
-        font-size:20px;
-    }
-}
-
-/* =========================================================
-   SECTION TITLE (About, Experience, Staff, Community)
-========================================================= */
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-.section-title h1{
-    font-family:'Ubuntu', sans-serif;
-    font-size:48px;
-    font-weight:700;
-    color:#fff;
-    text-transform:uppercase;
-    letter-spacing:1px;
-}
-.section-line{
-    width:80px;
-    height:4px;
-    background:#ADD8E6;
-    margin:15px auto 0;
-    border-radius:10px;
-}
-
-@media(max-width:768px){
-    .section-title h1{ font-size:34px; }
-}
-
-/* =========================================================
-   ABOUT US
-   -> disamakan persis dengan brand-description di Home
-========================================================= */
-/* ==========================================
-   ABOUT US (SAMA PERSIS DENGAN HOME)
-========================================== */
-
-.about-section{
-    background:#121212;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    padding:100px 20px;
-}
-
-.about-content{
-    width:100%;
-    max-width:900px;
-    margin:0 auto;
-    text-align:center;
-    color:#fff;
-}
-
-.about-content p{
-    font-family:'Ubuntu', sans-serif;
-    font-size:32px;
-    line-height:1.8;
-    font-weight:400;
-    color:#e0e0e0;
-    margin-bottom:20px;
-}
-
-.about-content h2{
-    font-family:'Ubuntu', sans-serif;
-    font-size:42px;
-    font-weight:700;
-    color:#ADD8E6;
-    letter-spacing:3px;
-    margin-top:25px;
-}
-
-@media(max-width:768px){
-    .about-content p{ font-size:18px; }
-    .about-content h2{ font-size:26px; }
-}
-
-@media(max-width:480px){
-    .about-content p{ font-size:16px; }
-    .about-content h2{ font-size:22px; }
-}
-
-/* =========================================================
-   OUR EXPERIENCES
-   -> sejajar (tidak zig-zag), gambar selalu di kanan garis
-========================================================= */
-.experience-section{
-    background:#121212;
-    padding:100px 0;
-    font-family:'Ubuntu', sans-serif;
-    overflow:hidden;
-}
-
-.experience-box{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    max-width:1300px;
-    margin:0 auto 100px;
-    gap:60px;
-    padding:0 80px;
-}
-.experience-box:last-child{
-    margin-bottom:0;
-}
-
-.experience-left,
-.experience-right{
-    flex:1;
-    max-width:600px;
-}
-
-.experience-left h1{
-    font-size:46px;
-    font-weight:700;
-    color:#fff;
-    text-transform:uppercase;
-    margin-bottom:20px;
-}
-.experience-left p{
-    font-family:'Poppins', sans-serif;
-    font-size:18px;
-    line-height:1.8;
-    color:#ccc;
-    margin-bottom:30px;
-}
-.experience-left a{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding:16px 40px;
-    background:#ADD8E6;
-    color:#000;
-    font-weight:700;
-    font-size:18px;
-    border-radius:10px;
-    border:2px solid #ADD8E6;
-    transition:.3s ease;
-}
-.experience-left a:hover{
-    background:transparent;
-    color:#ADD8E6;
-}
-
-.experience-right{
-    display:flex;
-    justify-content:center;
-}
-.experience-right img{
-    width:100%;
-    max-width:500px;
-    border-radius:15px;
-    border:none;
-    box-shadow:none;
-    transition:.3s ease;
-}
-.experience-right img:hover{
-    transform:scale(1.03);
-}
-
-.experience-box .vertical-divider{
-    height:350px;
-    flex-shrink:0;
-}
-
-@media(max-width:1200px){
-    .experience-box{ gap:40px; padding:0 40px; }
-    .experience-left h1{ font-size:36px; }
-}
-
-@media (max-width:991px){
-
-    .experience-box{
-        display:flex;
-        flex-direction:column-reverse;
-        align-items:center;
-        justify-content:center;
-        text-align:center;
-        padding:0 20px;
-        gap:30px;
-        margin-bottom:70px;
-    }
-
-    .experience-right{
-        order:-1;
-        width:100%;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    }
-
-    .experience-right img{
-        width:100%;
-        max-width:280px;
-        border:none;
-        border-radius:15px;
-        box-shadow:none;
-    }
-
-    .experience-left{
-        width:100%;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        justify-content:center;
-        text-align:center;
-    }
-
-    .experience-left h1{
-        font-size:30px;
-        margin-bottom:15px;
-    }
-
-    .experience-left p{
-        font-size:16px;
-        line-height:1.8;
-        max-width:500px;
-    }
-
-    .experience-left a{
-        width:100%;
-        max-width:260px;
-        margin-top:10px;
-    }
-
-    .experience-box .vertical-divider{
-        display:none;
-    }
-
-}@media (max-width:991px){
-
-    .experience-box{
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        justify-content:center;
-        text-align:center;
-        gap:25px;
-        padding:0 20px;
-        margin-bottom:70px;
-    }
-
-    /* Logo paling atas */
-    .experience-right{
-        order:1;
-        width:100%;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-    }
-
-    .experience-right img{
-        width:100%;
-        max-width:280px;
-        border:none;
-        border-radius:15px;
-        box-shadow:none;
-    }
-
-    /* Isi berada di bawah logo */
-    .experience-left{
-        order:2;
-        width:100%;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        justify-content:center;
-        text-align:center;
-    }
-
-    .experience-left h1{
-        font-size:30px;
-        margin-bottom:18px;
-    }
-
-    .experience-left p{
-        font-size:16px;
-        line-height:1.8;
-        max-width:500px;
-        margin-bottom:25px;
-    }
-
-    .experience-left a{
-        width:100%;
-        max-width:280px;
-        height:60px;
-        display:flex;
-        align-items:center;
-        justify-content:center;
-    }
-
-    .experience-box .vertical-divider{
-        display:none;
-    }
-
-}
-
-/* =========================================================
-   OUR STAFF (Horizontal Scroll + Draggable)
-========================================================= */
-.staff-section{
-    background:#121212;
-    padding:100px 0;
-    font-family:'Ubuntu', sans-serif;
-}
-.staff-description{
-    text-align:center;
-    color:#ccc;
-    font-size:18px;
-    margin-bottom:50px;
-    font-family:'Poppins', sans-serif;
-}
-
-.staff-slider{
-    display:flex;
-    align-items:center;
-    max-width:1300px;
-    margin:0 auto;
-    padding:0 80px;
-    gap:20px;
-}
-
-.staff-track{
-    display:flex;
-    gap:30px;
-    overflow-x:auto;
-    scroll-behavior:smooth;
-    padding:20px 10px 30px;
-    flex:1;
-    cursor:grab;
-    scrollbar-width:thin;
-    scrollbar-color:#ADD8E6 #222;
-}
-.staff-track.dragging{
-    cursor:grabbing;
-    scroll-behavior:auto;
-}
-.staff-track::-webkit-scrollbar{
-    height:6px;
-}
-.staff-track::-webkit-scrollbar-track{
-    background:#222;
-    border-radius:10px;
-}
-.staff-track::-webkit-scrollbar-thumb{
-    background:#ADD8E6;
-    border-radius:10px;
-}
-
-.staff-card{
-    flex:0 0 220px;
-    background:#222;
-    border-radius:12px;
-    padding:35px 20px;
-    text-align:center;
-    transition:.3s ease;
-    user-select:none;
-}
-.staff-card:hover{
-    background:#ADD8E6;
-    transform:translateY(-6px);
-}
-.staff-card img{
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    object-fit:cover;
-    border:4px solid #ADD8E6;
-    margin-bottom:15px;
-    transition:.3s ease;
-    pointer-events:none;
-}
-.staff-card:hover img{
-    border-color:#fff;
-}
-.staff-card h2{
-    font-size:20px;
-    color:#fff;
-    margin-bottom:5px;
-    transition:.3s ease;
-}
-.staff-card span{
-    font-size:14px;
-    color:#ADD8E6;
-    font-weight:500;
-    transition:.3s ease;
-}
-.staff-card:hover h2,
-.staff-card:hover span{
-    color:#000;
-}
-
-.staff-prev,
-.staff-next{
-    background:#ADD8E6;
-    border:2px solid #ADD8E6;
-    color:#000;
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    font-size:20px;
-    cursor:pointer;
-    flex-shrink:0;
-    transition:.3s ease;
-}
-.staff-prev:hover,
-.staff-next:hover{
-    background:transparent;
-    color:#ADD8E6;
-}
-
-@media(max-width:991px){
-    .staff-slider{ padding:0 25px; gap:12px; }
-    .staff-card{ flex:0 0 190px; padding:28px 18px; }
-}
-@media(max-width:768px){
-    .staff-slider{ padding:0 15px; }
-    .staff-card{ flex:0 0 160px; padding:22px 15px; }
-    .staff-card img{ width:90px; height:90px; }
-    .staff-card h2{ font-size:17px; }
-    .staff-prev, .staff-next{ width:40px; height:40px; font-size:16px; }
-}
-@media(max-width:480px){
-    .staff-card{ flex:0 0 140px; }
-    .staff-card img{ width:80px; height:80px; }
-}
-
-/* =========================================================
-   COMMUNITY SECTION
-   -> tombol berjajar ke bawah (column) semua ukuran layar
-========================================================= */
-.community-section{
-    background:#121212;
-    padding:100px 0;
-    text-align:center;
-    font-family:'Ubuntu', sans-serif;
-}
-.community-content p{
-    color:#ccc;
-    font-size:18px;
-    margin-bottom:30px;
-    font-family:'Poppins', sans-serif;
-}
-.community-buttons{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:20px;
-}
-.community-btn{
-    width:100%;
-    max-width:380px;
-    height:70px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#ADD8E6;
-    color:#000;
-    font-weight:700;
-    font-size:20px;
-    border-radius:10px;
-    border:2px solid #ADD8E6;
-    transition:.3s ease;
-}
-.community-btn:hover{
-    background:transparent;
-    color:#ADD8E6;
-}
-
-@media(max-width:480px){
-    .community-btn{
-        height:60px;
-        font-size:17px;
-    }
-}
-
-.this-is-pain,
-.community-btn,
-.experience-left a{
-    transition: .35s ease;
-}
-
-
-
-.this-is-pain:hover,
-.community-btn:hover,
-.experience-left a:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 0 15px rgba(173,216,230,.5),
-                0 0 30px rgba(173,216,230,.25);
-}
-
-.navbar.sticky{
-    background: rgba(18,18,18,.55);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.home-logo{
-    animation: floating 4s ease-in-out infinite;
-}
-
-@keyframes floating{
-
-    0%{
-        transform:translateY(0px);
-    }
-
-    50%{
-        transform:translateY(-12px);
-    }
-
-    100%{
-        transform:translateY(0px);
-    }
-
-}
-
-/* ==========================
-   STAFF DESCRIPTION
-========================== */
-
-.staff-description{
-    width:100%;
-    max-width:700px;
-    margin:0 auto 50px;
-    padding:0 25px;
-
-    text-align:center;
-
-    font-family:'Poppins', sans-serif;
-    font-size:22px;
-    line-height:1.8;
-    color:#ccc;
-}
-
-/* ========================= */
-/* STAFF PROFILE LINK */
-/* ========================= */
-
-.staff-card{
-    position: relative;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-decoration:none;
-    color:white;
-    cursor:pointer;
-    transition:.35s ease;
-}
-
-.staff-card:hover{
-    transform:translateY(-8px);
-}
-
-.staff-image{
-    position:relative;
-    overflow:hidden;
-    border-radius:50%;
-}
-
-.staff-image img{
-    display:block;
-    transition:.35s ease;
-}
-
-.staff-overlay{
-    position:absolute;
-    inset:0;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:rgba(0,0,0,.65);
-
-    color:white;
-
-    font-size:14px;
-
-    font-weight:600;
-
-    opacity:0;
-
-    transition:.35s ease;
-
-    text-align:center;
-
-    padding:15px;
-}
-
-.staff-card:hover .staff-overlay{
-    opacity:1;
-}
-
-.staff-card:hover img{
-    transform:scale(1.08);
-}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>COMMON PEOPLE CLUB</title>
+
+    <link rel="icon" href="Image/profil.jpg">
+    <link rel="stylesheet" href="src/style.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Waypoints -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <!-- Typed JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+    <meta name="theme-color" content="#ADD8E6">
+</head>
+
+<body>
+
+    <div id="particles-js"></div>
+
+    <!-- Scroll Button -->
+    <div class="scroll-up-btn">
+        <img src="Image/up.svg" alt="Scroll Up">
+    </div>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="max-width" data-aos="fade-down">
+
+            <div class="logo">
+
+                <a href="#home">
+
+                    <img src="Image/ChatGPT%20Image%206%20Jul%202026,%2021.49.40.png" class="navbar-logo"
+                        alt="COMMON PEOPLE CLUB">
+
+                </a>
+
+            </div>
+
+            <ul class="menu">
+
+                <li><a href="#home">Home</a></li>
+
+                <li><a href="#about">Our Maps</a></li>
+
+                <li><a href="#experiences">Experiences</a></li>
+
+                <li><a href="#staff">Staff</a></li>
+
+                <li><a href="#ourlink">Social Media</a></li>
+
+            </ul>
+
+            <button class="hamburger">
+
+                <span class="bar"></span>
+
+            </button>
+
+        </div>
+
+    </nav>
+
+    <!-- Mobile Navigation -->
+
+    <nav class="mobile-nav">
+
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experiences">Our Maps</a>
+        <a href="#staff">Staff</a>
+        <a href="#ourlink">Social Media</a>
+        <a href="#ourlink">Event Archive (Soon) </a>
+
+    </nav>
+
+    <!-- ================= HOME ================= -->
+
+    <section class="home" id="home">
+
+        <div class="home-split">
+
+            <!-- LEFT -->
+
+            <div class="home-left" data-aos="fade-right" data-aos-duration="1000">
+
+                <div class="text-2">
+
+                    COMMON PEOPLE CLUB
+
+                </div>
+
+                <div class="brand-description">
+
+                    <p>
+                        Music For The Masses, by Common People Club
+                    </p>
+
+                    <p>
+                        Built by community,
+                        shaped by culture,
+                        made to endure.
+                    </p>
+
+                    <span>#UNITE</span>
+
+                </div>
+
+                <div class="text-3">
+
+                    <span class="typing"></span>
+
+                </div>
+
+            </div>
+
+            <!-- CENTER LINE -->
+
+            <div class="vertical-divider" data-aos="zoom-in" data-aos-delay="300"></div>
+
+            <!-- RIGHT -->
+
+            <div class="home-right" data-aos="fade-left" data-aos-duration="1000">
+
+                <img src="Image/ChatGPT_Image_6_Jul_2026__21.49.40-removebg-preview.png" class="home-logo"
+                    alt="COMMON PEOPLE CLUB">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= END HOME ================= -->
+
+
+    <!-- ================= ABOUT US ================= -->
+
+    <section class="about-section" id="about">
+
+        <div class="section-title" data-aos="fade-up">
+            <h1>ABOUT US</h1>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="about-content" data-aos="fade-up" data-aos-delay="150">
+
+            <p>
+                A creative hub where youth culture,
+                digital experiences, and community come together.
+            </p>
+
+            <p>
+                Built by community,
+                shaped by culture,
+                made to endure.
+            </p>
+
+            <h2>Love, Music, Friendship!</h2>
+
+        </div>
+
+    </section>
+
+    <!-- ================= OUR EXPERIENCES ================= -->
+
+    <section class="experience-section" id="experiences">
+
+        <div class="section-title" data-aos="fade-up">
+            <h1>OUR MAPS</h1>
+            <div class="section-line"></div>
+        </div>
+
+        <!-- BURZUM -->
+
+        <div class="experience-box" data-aos="fade-right">
+
+            <div class="experience-left">
+
+                <h1>BURZUM</h1>
+
+                <p>
+                    Burzum is one of the signature Roblox experiences
+                    developed by Common People Club.
+
+                    Featuring immersive environments,
+                    realistic atmosphere,
+                    and a unique community-driven experience.
+                </p>
+
+                <a href="hhttps://www.roblox.com/id/games/124283500826758/Burzum">
+                    Play Experience
+                </a>
+
+            </div>
+
+            <div class="vertical-divider"></div>
+
+            <div class="experience-right" data-aos="zoom-in" data-aos-delay="150">
+
+                <img src="Image/burzum logo.webp">
+
+            </div>
+
+        </div>
+
+        <!-- GOAL KIDS CORNER -->
+
+        <div class="experience-box" data-aos="fade-right">
+
+            <div class="experience-left">
+
+                <h1>GOAL KIDS CORNER</h1>
+
+                <p>
+
+                    Goal Kids Corner provides a fun,
+                    family friendly environment where
+                    creativity and interaction come together.
+
+                </p>
+
+                <a href="https://www.roblox.com/share/g/98916300">
+                    Play Experience
+                </a>
+
+            </div>
+
+            <div class="vertical-divider"></div>
+
+            <div class="experience-right" data-aos="zoom-in" data-aos-delay="150">
+
+                <img src="Image/111.webp  ">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= STAFF ================= -->
+
+    <section class="staff-section" id="staff">
+
+        <div class="section-title" data-aos="fade-up">
+
+            <h1>OUR STAFF</h1>
+
+            <div class="section-line"></div>
+
+        </div>
+
+        <div class="staff-description" data-aos="fade-up">
+
+            <p>
+                Meet the amazing people behind
+                Common People Club.
+            </p>
+
+        </div>
+
+        <div class="staff-slider" data-aos="fade-up" data-aos-delay="150">
+
+            <button class="staff-prev">
+
+                &#10094;
+
+            </button>
+
+            <div class="staff-track">
+
+                <!-- STAFF -->
+
+                <a href="https://www.roblox.com/id/users/9610948798/profile" target="_blank" class="staff-card"
+                    data-aos="flip-left" data-aos-delay="0">
+
+                    <div class="staff-image">
+
+                        <img src="Image/Rudy Ava.webp" alt="Founder">
+
+                        <div class="staff-overlay">
+                            View Roblox Profile ↗
+                        </div>
+
+                    </div>
+
+                    <h2>Rudyftones</h2>
+
+                    <span>Founder & Developer</span>
+
+                </a>
+
+                <a href="https://www.roblox.com/id/users/9051511032/profile" target="_blank" class="staff-card"
+                    data-aos="flip-left" data-aos-delay="100">
+
+                    <div class="staff-image">
+                        <img src="Image/deephow.webp" alt="Developer">
+
+                        <div class="staff-overlay">
+                            View Roblox Profile ↗
+                        </div>
+                    </div>
+
+                    <h2>Deeph0w</h2>
+
+                    <span>Co - Founder</span>
+
+                </a>
+
+
+                <a href="https://www.roblox.com/id/users/9068432556/profile?friendshipSourceType=PlayerSearch"
+                    target="_blank" class="staff-card" data-aos="flip-left" data-aos-delay="200">
+
+                    <div class="staff-image">
+                        <img src="Image/yobarker.webp" alt="Builder">
+
+                        <div class="staff-overlay">
+                            View Roblox Profile ↗
+                        </div>
+                    </div>
+
+                    <h2>Yokio Barker</h2>
+
+                    <span>Developer</span>
+
+                </a>
+
+
+                <a href="https://www.roblox.com/id/users/4649995880/profile?friendshipSourceType=PlayerSearch"
+                    target="_blank" class="staff-card" data-aos="flip-left" data-aos-delay="200">
+
+                    <div class="staff-image">
+                        <img src="Image/yobarker.webp" alt="Builder">
+
+                        <div class="staff-overlay">
+                            View Roblox Profile ↗
+                        </div>
+                    </div>
+
+                    <h2>Ujang</h2>
+
+                    <span>Event Organizer</span>
+
+                </a>
+
+
+                <a href="https://www.roblox.com/id/users/10759262789/profile" target="_blank" class="staff-card"
+                    data-aos="flip-left" data-aos-delay="300">
+
+                    <div class="staff-image">
+                        <img src="Image/acong.webp" alt="Moderator">
+
+                        <div class="staff-overlay">
+                            View Roblox Profile ↗
+                        </div>
+                    </div>
+
+                    <h2>Acong</h2>
+
+                    <span>Finance & Bug Hunter</span>
+
+                </a>
+
+
+                <a href="https://www.roblox.com/id/users/9130035972/profile" target="_blank" class="staff-card"
+                    data-aos="flip-left" data-aos-delay="400">
+
+                    <div class="staff-image">
+                        <img src="Image/mas gokil.webp" alt="Administrator">
+
+                        <div class="staff-overlay">
+                            View Roblox Profile ↗
+                        </div>
+                    </div>
+
+                    <h2>Gokil</h2>
+
+                    <span>Head Admin & Bug Hunter</span>
+
+                </a>
+
+            </div>
+
+            <button class="staff-next">
+
+                &#10095;
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer id="ourlink" data-aos="fade-up">
+
+        <img src="Image/ChatGPT_Image_6_Jul_2026__21.49.40-removebg-preview.png" class="footer-logo"
+            alt="Common People Club">
+
+        <h2>
+
+            COMMON PEOPLE CLUB
+
+        </h2>
+
+        <p>
+
+            Built by Community.
+            Shaped by Culture.
+            Made to Endure.
+
+        </p>
+
+        <div class="hero-buttons footer-buttons" data-aos="fade-up" data-aos-delay="100">
+
+            <a class="this-is-pain contact-btn" href="https://api.whatsapp.com/send/?phone=628157086724"
+                target="_blank">
+
+                WhatsApp (Fast Respon)
+
+                <a class="this-is-pain contact-btn" href="https://discord.gg/Aq7ZGkndSF" target="_blank">
+
+                    Discord Server
+
+                </a>
+
+                <a class="this-is-pain contact-btn" href=https://www.roblox.com/share/g/98916300" target="_blank">
+
+                    Join Our Community On Roblox
+
+                </a>
+
+
+                <a class="this-is-pain instagram-btn" href="https://www.instagram.com/goalkidscorner" target="_blank">
+
+                    Follow Our Instagram
+
+                </a>
+
+                <a class="this-is-pain youtube-btn"
+                    href="www.tiktok.com/@goalkidscorner?is_from_webapp=1&sender_device=pc" target="_blank">
+
+                    Follow Our Tiktok
+                </a>
+
+        </div>
+
+        <span>
+
+            © 2026 Rudyftones.
+            All Rights Reserved.
+
+        </span>
+
+    </footer>
+
+    <!-- ================= LOADER ================= -->
+
+    <div class="loader-wrapper">
+
+        <div class="longfazers">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+    <!-- ================= SCRIPTS ================= -->
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+    </script>
+
+    <script src="src/script.js"></script>
+
+    <script>
+
+        $(window).on("load", function () {
+
+            $(".loader-wrapper").fadeOut("slow");
+
+        });
+
+    </script>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+
+</body>
+
+</html>
