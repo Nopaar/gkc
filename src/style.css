@@ -1165,38 +1165,129 @@ footer span a:hover {
     color:#ccc;
 }
 
-.staff-description p{
-    margin:0;
+/* ========================= */
+/* STAFF PROFILE LINK */
+/* ========================= */
+
+.staff-card{
+    position: relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-decoration:none;
+    color:white;
+    cursor:pointer;
+    transition:.35s ease;
 }
 
-@media (max-width:991px){
+.staff-card:hover{
+    transform:translateY(-8px);
+}
 
-    .staff-description{
-        max-width:600px;
-        padding:0 35px;
-        font-size:20px;
-    }
+.staff-image{
+    position:relative;
+    overflow:hidden;
+    border-radius:50%;
+}
 
+.staff-image img{
+    display:block;
+    transition:.35s ease;
+}
+
+.staff-overlay{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.65);
+
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s ease;
+
+    text-align:center;
+
+    pointer-events:none;
+}
+
+.staff-card:hover .staff-overlay{
+    opacity:1;
+    visibility:visible;
+}
+
+.staff-card:hover .staff-overlay{
+    opacity:1;
+}
+
+.staff-card:hover img{
+    transform:scale(1.08);
+}
+
+[data-aos]{
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+[data-aos]{
+    will-change:transform, opacity;
+    transform:translateZ(0);
+    backface-visibility:hidden;
+}
+
+.staff-track{
+    will-change:scroll-position;
+}
+
+.home-logo{
+    will-change:transform;
+}
+
+/* ===================================
+   MOBILE ROBLOX PROFILE LINK
+=================================== */
+
+.staff-profile-link{
+    display:none;
+
+    margin-top:10px;
+
+    color:#ADD8E6;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.staff-profile-link:hover{
+    color:white;
 }
 
 @media (max-width:768px){
 
-    .staff-description{
-        max-width:500px;
-        padding:0 30px;
-        font-size:18px;
-        line-height:1.7;
+    .staff-overlay{
+        display:none;
+    }
+
+    .staff-profile-link{
+        display:inline-block;
     }
 
 }
-
-@media (max-width:480px){
-
-    .staff-description{
-        max-width:360px;
-        padding:0 28px;
-        font-size:16px;
-        line-height:1.8;
-    }
-
-}  
